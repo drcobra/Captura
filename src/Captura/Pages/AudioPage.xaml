@@ -13,7 +13,7 @@
                       FontSize="15"/>
 
             <ScrollViewer IsEnabled="{Binding Settings.Audio.Enabled}"
-                          MaxHeight="130">
+                          MaxHeight="320">
                 <StackPanel IsEnabled="{Binding RecordingViewModel.CanChangeAudioSources}"
                             Name="AudioSourcesPanel">
                     <ItemsControl ItemsSource="{Binding AudioSource.AvailableRecordingSources}">
@@ -80,15 +80,15 @@
             </DockPanel>
 
             <StackPanel IsEnabled="{Binding RecordingViewModel.RecorderState, Converter={StaticResource NotRecordingConverter}}"
-                        Margin="0,20,0,0">
+                        Margin="0,0,0,0">
                 <CheckBox IsChecked="{Binding Settings.Audio.PlaybackRecordingRealTime}"
                           Content="{Binding PlayRecAudio, Source={StaticResource Loc}, Mode=OneWay}"
                           IsEnabled="{Binding Settings.Audio.SeparateFilePerSource, Converter={StaticResource NegatingConverter}}"
-                          Margin="0,5"/>
+                          Margin="0,2"/>
 
                 <CheckBox IsChecked="{Binding Settings.Audio.SeparateFilePerSource}"
                           Content="{Binding SeparateAudioFiles, Source={StaticResource Loc}, Mode=OneWay}"
-                          Margin="0,5"/>
+                          Margin="0,2"/>
             </StackPanel>
         </StackPanel>
     </Grid>

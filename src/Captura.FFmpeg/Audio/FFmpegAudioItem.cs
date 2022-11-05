@@ -37,12 +37,28 @@ namespace Captura.Models
             return $"-c:a libmp3lame -qscale:a {qscale}";
         };
 
+        public static FFmpegAudioArgsProvider Mp3Mono { get; } = Quality =>
+        {
+            // quality: 9 (lowest) to 0 (highest)
+            var qscale = (100 - Quality) / 11;
+
+            return $"-c:a libmp3lame -ac 1 -qscale:a {qscale}";
+        };
+
         public static FFmpegAudioArgsProvider Vorbis { get; } = Quality =>
         {
             // quality: 0 (lowest) to 10 (highest)
             var qscale = (10 * (Quality - 1)) / 99;
 
             return $"-c:a libvorbis -qscale:a {qscale}";
+        };
+
+        public static FFmpegAudioArgsProvider VorbisMono { get; } = Quality =>
+        {
+            // quality: 0 (lowest) to 10 (highest)
+            var qscale = (10 * (Quality - 1)) / 99;
+
+            return $"-c:a libvorbis -ac 1 -qscale:a {qscale}";
         };
 
         public static FFmpegAudioArgsProvider Opus { get; } = Quality =>
@@ -57,7 +73,9 @@ namespace Captura.Models
         {
             new FFmpegAudioItem("AAC", ".aac", Aac),
             new FFmpegAudioItem("Mp3", ".mp3", Mp3),
+            new FFmpegAudioItem("Mp3 Mono", ".mp3", Mp3Mono),
             new FFmpegAudioItem("Vorbis", ".ogg", Vorbis),
+            new FFmpegAudioItem("Vorbis Mono", ".ogg", VorbisMono),
             new FFmpegAudioItem("Opus", ".opus", Opus)
         };
     }
