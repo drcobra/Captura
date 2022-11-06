@@ -1,3 +1,10 @@
+# CapturaMOD
+
+- Revereted back to 8 version because of GUI changes
+- Can record in mono in MP3 & Vorbis
+- Bigger visible list of devices
+
+***
 # Captura
 
 [![Master Build Status](https://img.shields.io/appveyor/ci/MathewSachin/Captura/master.svg?style=flat-square)](https://ci.appveyor.com/project/MathewSachin/Captura)
